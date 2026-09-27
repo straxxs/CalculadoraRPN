@@ -1,6 +1,5 @@
 package proyecto;
 import java.util.HashMap;
-import java.util.List;
 
 public class NotacionPolacaInversa {
 
@@ -96,6 +95,7 @@ public class NotacionPolacaInversa {
 		return simbolo.equals("^") || simbolo.equals("#");
 	}
 
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static boolean esNumeroCompleto(String texto) {
 	    try {
 	        Double.parseDouble(texto);
