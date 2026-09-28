@@ -77,6 +77,12 @@ public class builder_silva {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
+        java.net.URL urlIcono = getClass().getResource("/icono.png");
+        if (urlIcono != null) {
+            java.awt.Image icono = new javax.swing.ImageIcon(urlIcono).getImage();
+            frame.setIconImage(icono);
+        }
+
         JButton boton1 = new JButton("1");
         boton1.setMargin(new Insets(2, 5, 2, 5));
         boton1.setBackground(Color.decode("#FFFFFF"));
