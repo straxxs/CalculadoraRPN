@@ -86,7 +86,7 @@ public class builder_silva {
         JButton boton1 = new JButton("1");
         boton1.setMargin(new Insets(2, 5, 2, 5));
         boton1.setBackground(Color.decode("#FFFFFF"));
-        boton1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton1.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
                 agregar("1");
@@ -103,7 +103,7 @@ public class builder_silva {
         });
         boton2.setBackground(Color.decode("#FFFFFF"));
         boton2.setMargin(new Insets(2, 5, 2, 5));
-        boton2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton2.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton2.setBounds(90, 161, 40, 40);
         frame.getContentPane().add(boton2);
 
@@ -115,7 +115,7 @@ public class builder_silva {
         });
         boton3.setBackground(Color.decode("#FFFFFF"));
         boton3.setMargin(new Insets(2, 5, 2, 5));
-        boton3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton3.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton3.setBounds(142, 161, 40, 40);
         frame.getContentPane().add(boton3);
 
@@ -127,7 +127,7 @@ public class builder_silva {
         });
         boton4.setBackground(Color.decode("#FFFFFF"));
         boton4.setMargin(new Insets(2, 5, 2, 5));
-        boton4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton4.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton4.setBounds(40, 110, 40, 40);
         frame.getContentPane().add(boton4);
 
@@ -139,7 +139,7 @@ public class builder_silva {
         });
         boton5.setBackground(Color.decode("#FFFFFF"));
         boton5.setMargin(new Insets(2, 5, 2, 5));
-        boton5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton5.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton5.setBounds(90, 110, 40, 40);
         frame.getContentPane().add(boton5);
 
@@ -151,7 +151,7 @@ public class builder_silva {
         });
         boton6.setBackground(Color.decode("#FFFFFF"));
         boton6.setMargin(new Insets(2, 5, 2, 5));
-        boton6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton6.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton6.setBounds(142, 110, 40, 40);
         frame.getContentPane().add(boton6);
 
@@ -163,7 +163,7 @@ public class builder_silva {
             }
         });
         boton7.setBackground(Color.decode("#FFFFFF"));
-        boton7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton7.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton7.setBounds(40, 59, 40, 40);
         frame.getContentPane().add(boton7);
 
@@ -175,7 +175,7 @@ public class builder_silva {
         });
         boton8.setBackground(Color.decode("#FFFFFF"));
         boton8.setMargin(new Insets(2, 5, 2, 5));
-        boton8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton8.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton8.setBounds(90, 59, 40, 40);
         frame.getContentPane().add(boton8);
 
@@ -187,7 +187,7 @@ public class builder_silva {
         });
         boton9.setBackground(Color.decode("#FFFFFF"));
         boton9.setMargin(new Insets(2, 5, 2, 5));
-        boton9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton9.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton9.setBounds(142, 59, 40, 40);
         frame.getContentPane().add(boton9);
 
@@ -199,7 +199,7 @@ public class builder_silva {
         });
         boton0.setBackground(Color.decode("#FFFFFF"));
         boton0.setMargin(new Insets(2, 5, 2, 5));
-        boton0.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        boton0.setFont(new Font("Tahoma", Font.PLAIN, 15));
         boton0.setBounds(40, 212, 90, 40);
         frame.getContentPane().add(boton0);
 
@@ -211,7 +211,7 @@ public class builder_silva {
         });
         botonigual.setBackground(Color.decode("#FCA311"));
         botonigual.setMargin(new Insets(2, 5, 2, 5));
-        botonigual.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        botonigual.setFont(new Font("Tahoma", Font.PLAIN, 15));
         botonigual.setBounds(192, 212, 40, 40);
         frame.getContentPane().add(botonigual);
 
@@ -223,7 +223,7 @@ public class builder_silva {
         });
         botonmenos.setBackground(Color.decode("#babec2"));
         botonmenos.setMargin(new Insets(2, 5, 2, 5));
-        botonmenos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        botonmenos.setFont(new Font("Tahoma", Font.PLAIN, 15));
         botonmenos.setBounds(292, 110, 40, 40);
         frame.getContentPane().add(botonmenos);
 
@@ -235,7 +235,7 @@ public class builder_silva {
         });
         botonmas.setBackground(Color.decode("#babec2"));
         botonmas.setMargin(new Insets(2, 5, 2, 5));
-        botonmas.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        botonmas.setFont(new Font("Tahoma", Font.PLAIN, 15));
         botonmas.setBounds(242, 110, 40, 40);
         frame.getContentPane().add(botonmas);
 
