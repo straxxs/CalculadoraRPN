@@ -1,7 +1,8 @@
 package proyecto;
+import java.math.BigDecimal;
 
 public class Calculadora {
-	public double Calcular(Cola cola) {
+	public String Calcular(Cola cola) {
 		Pila pila = new Pila();
 		if(cola.cola.isEmpty()) {
 	        throw new IllegalArgumentException("Cola vacía");
@@ -9,6 +10,11 @@ public class Calculadora {
 		for(String i : cola.cola) {
 			if(NotacionPolacaInversa.esNumeroCompleto(i)) {
 				pila.añadir(i);
+			}else if(i.equals("neg")) {
+				if(pila.pila.size()<1) {throw new IllegalArgumentException("Calculo Invalido");}
+				double num = Double.parseDouble(pila.pila.get(pila.pila.size()-1));
+				pila.eliminar(pila.pila.size()-1);
+				pila.añadir(BigDecimal.valueOf(-num).toPlainString());
 			}else {
 				if(pila.pila.size()<2) {throw new IllegalArgumentException("Calculo Invalido");}
 				double num1 = Double.parseDouble(pila.pila.get(pila.pila.size()-2));
@@ -34,10 +40,10 @@ public class Calculadora {
 				};
 				pila.eliminar(pila.pila.size()-2);
 				pila.eliminar(pila.pila.size()-1);
-				pila.añadir(String.valueOf(res));
+				pila.añadir(BigDecimal.valueOf(res).toPlainString());
 			}
 		}
-		return Double.parseDouble(pila.pila.get(0));
+		return pila.pila.get(0);
 	}
 	public static long calcularTetracion(long base, long altura) {
 	    if (altura == 0) return 1;

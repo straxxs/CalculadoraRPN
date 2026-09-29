@@ -10,6 +10,7 @@ public class NotacionPolacaInversa {
 		Pila pila = new Pila();
 		Cola cola = new Cola();
 		String buffer = "";
+		String ultimoToken = ""; 
 
 		String[] simbolos = cadena_inicial.split("");
 
@@ -18,6 +19,7 @@ public class NotacionPolacaInversa {
 			if(i.equals("(")) {
 				pila.añadir(i);
 				buffer = "";
+				ultimoToken = "(";
 				continue;
 			}
 			else if(i.equals(")")) {
@@ -29,6 +31,37 @@ public class NotacionPolacaInversa {
 				}
 				pila.eliminar(pila.pila.size()-1);
 				buffer = "";
+				ultimoToken = ")";
+				continue;
+			}
+
+			// "-" como signo negativo: solo si no hay nada antes, o lo anterior
+			// fue un operador o un paréntesis abierto.
+			// Hay dos casos:
+			// 1) Si viene justo después de "^" o "#", es el signo del
+			//    exponente/altura puntual: se pega al número (literal
+			//    negativo), afectando solo a ese operando.
+			// 2) En cualquier otro caso (inicio, "(", + - * /), el signo
+			//    debe "envolver" toda la cadena de potencias/tetraciones
+			//    que sigue (ej: -2^2 = -(2^2)), así que se apila como el
+			//    operador unario "neg".
+			if(i.equals("-") && buffer.isEmpty() &&
+			(ultimoToken.isEmpty() || ultimoToken.equals("(") || esOperador(ultimoToken))) {
+				if(ultimoToken.equals("^") || ultimoToken.equals("#")) {
+					buffer = "-";
+					cola.añadir(buffer);
+					ultimoToken = "numero";
+				} else {
+					int prioridadSigno = mayorPrioridad("neg", pila.getUltimoSimbolo());
+					if(prioridadSigno == 1) {
+						pila.añadir("neg");
+					} else {
+						pila.vaciarHastaPrioridad("neg", cola.cola);
+						pila.añadir("neg");
+					}
+					buffer = "";
+					ultimoToken = "-";
+				}
 				continue;
 			}
 
@@ -40,6 +73,7 @@ public class NotacionPolacaInversa {
 					buffer = i;
 				}
 				cola.añadir(buffer);
+				ultimoToken = "numero";
 				continue;
 			}
 
@@ -60,7 +94,10 @@ public class NotacionPolacaInversa {
 				pila.vaciarHastaPrioridad(i, cola.cola);
 				pila.añadir(i);
 			}
+			
 			buffer = "";
+			ultimoToken = i;
+
 		}
 
 		for(String i : pila.pila) {
@@ -69,21 +106,22 @@ public class NotacionPolacaInversa {
 			}
 		}
 		pila.vaciarEnCola(pila, cola);
+		
 		return cola;
 	}
 
+	private static boolean esOperador(String simbolo) {
+		return simbolo.equals("+") || simbolo.equals("-") || simbolo.equals("*") ||
+			simbolo.equals("/") || simbolo.equals("^") || simbolo.equals("#");
+	}
+
 	public static boolean esNumero(String texto) {
-		try {
-			Integer.parseInt(texto);
-			return true;
-		} catch (NumberFormatException e) {
-			return false;
-		}
+    	return texto != null && texto.matches("-?\\d+");
 	}
 
 	public static int mayorPrioridad(String simbolo, String ultimoSimbolo) {
 		HashMap<String, Integer> p = new HashMap<>();
-		p.put("+", 0); p.put("-", 0); p.put("*", 1); p.put("/", 1); p.put("^", 2); p.put("#", 3);
+		p.put("+", 0); p.put("-", 0); p.put("*", 1); p.put("/", 1); p.put("neg", 2); p.put("^", 2); p.put("#", 2);
 		if(p.getOrDefault(simbolo, -1) > p.getOrDefault(ultimoSimbolo, -1)) {
 			return 1;
 		} else {
@@ -92,16 +130,10 @@ public class NotacionPolacaInversa {
 	}
 
 	public static boolean esAsociativoDerecha(String simbolo) {
-		return simbolo.equals("^") || simbolo.equals("#");
+		return simbolo.equals("^") || simbolo.equals("#") || simbolo.equals("neg");
 	}
 
-	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static boolean esNumeroCompleto(String texto) {
-	    try {
-	        Double.parseDouble(texto);
-	        return true;
-	    } catch (NumberFormatException e) {
-	        return false;
-	    }
+	    return texto != null && texto.matches("-?\\d+(\\.\\d+)?");
 	}
 }
