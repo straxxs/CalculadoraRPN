@@ -6,8 +6,8 @@ public class ConexionCalculadora {
         Calculadora calc = new Calculadora();
         try {
         	Cola resultadoPolaca = NPI.polaca_inversa(expresion);
-        	double resultado = calc.Calcular(resultadoPolaca);
-            return String.valueOf(resultado);
+        	String resultado = calc.Calcular(resultadoPolaca);
+            return resultado;
     
         } catch(IllegalArgumentException e) {
         	String error = "Error: " + e.getMessage();
